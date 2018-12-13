@@ -7,7 +7,8 @@ def get_appdriver():
         'platformName': 'Android',
         'deviceName': 'Redmi',
         'app': 'C:\\Projects\\com.ownmettro.androidecommerce.apk',
-        'apkPackage': 'com.ownmettro.androidecommerce'
+        'apkPackage': 'com.ownmettro.androidecommerce',
+        'autoGrantPermissions': 'true'
     }
     driver = webdriver.Remote(URL, desired_caps)
     return driver

@@ -1,7 +1,4 @@
-from Pages.mycart_page import MyCartPage
 from Tests.base_test import BaseTest
-from Pages.main_page import *
-from Pages.start_page import *
 import logging
 
 
@@ -10,13 +7,11 @@ class TestAddToCart(BaseTest):
 
     # run test in command line pytest Tests/add_item_to_cart.py -v
 
-    def test_add_to_cart_item(self, app):
+    def test_add_to_cart_item(self, app, pm):
         """add item to the empty cart"""
         logging.basicConfig(filename='/home/osboxes/pytest_mobile/logs/test.log', level=logging.DEBUG, filemode="w")
-        start_page = StartPage()
-        main_page = MainPage()
-        cart_page = MyCartPage()
-        app.browser.tap_button(start_page.get_skip_button())
-        app.browser.tap_button(main_page.get_cart_button())
-        result = app.browser.get_text(cart_page.get_cart_empty_cart())
+        app.browser.tap_button(pm.start_page.get_skip_button())
+        app.browser.tap_button(pm.main_page.get_cart_button())
+        result = app.browser.get_text(pm.my_cart_page.get_cart_empty_cart())
         assert result == "Your Cart is Empty"
+        app.browser.tap_button(pm.menu_items.get_back_button())

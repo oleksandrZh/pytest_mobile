@@ -1,9 +1,11 @@
 import pytest
 
 from Utils.application import Application
+from Utils.page_manager import PageManager
 
 
-class BaseTest():
+class BaseTest:
+
     @pytest.fixture(scope='function')
     def app(self, request):
         app = Application()
@@ -14,3 +16,8 @@ class BaseTest():
         request.addfinalizer(fin)
 
         return app
+
+    @pytest.yield_fixture()
+    def pm(self):
+        pm = PageManager()
+        yield pm
