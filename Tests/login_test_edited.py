@@ -13,3 +13,4 @@ class TestLoginEdited(BaseTest):
         app.base_helper.skip_main_page()
         app.login_helper.login_to_app(user)
 
+
