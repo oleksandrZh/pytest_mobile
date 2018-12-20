@@ -3,6 +3,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 import logging
 
+
 class Browser(object):
 
     def __init__(self, driver):
@@ -26,3 +27,12 @@ class Browser(object):
 
     def wait_element(self, selector):
         self.wait.until(expected_conditions.presence_of_element_located((By.XPATH, selector)))
+
+    def clear_field(self, selector):
+        self.driver.find_element(By.XPATH, selector).clear()
+
+    def enter_value_to_field(self, selector, value):
+        self.driver.find_element(By.XPATH, selector).send_keys(value)
+
+    def tap_back_button(self):
+        self.driver.back()
